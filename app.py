@@ -4,8 +4,6 @@ import requests
 
 app = Flask(__name__)
 
-EMAIL_DESTINO = 'contaprajogosusados@gmail.com'
-
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
@@ -23,7 +21,7 @@ def index():
             "_captcha": "false"
         }
         try:
-            requests.post(f"https://formsubmit.co/{EMAIL_DESTINO}", data=data)
+            requests.post(f"https://formsubmit.co/contaprajogosusados@gmail.com", data=data)
         except Exception as e:
             print("Falha ao enviar pelo FormSubmit:", e)
 
