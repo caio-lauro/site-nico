@@ -14,18 +14,6 @@ def index():
         with open("respostas.txt", "a", encoding="utf-8") as f:
             f.write(f"Propósito: {resposta1}\nDesejo: {resposta2}\n---\n")
 
-        # Enviar para o FormSubmit (simulando envio do formulário)
-        data = {
-            "resposta1": resposta1,
-            "resposta2": resposta2,
-            "_captcha": "false"
-        }
-        try:
-            session = requests.Session()
-            session.post('https://formsubmit.co/contaprajogosusados@gmail.com', data=data)
-        except Exception as e:
-            print("Falha ao enviar pelo FormSubmit:", e)
-
         return render_template("index.html", enviado=True)
 
     return render_template("index.html", enviado=False)
