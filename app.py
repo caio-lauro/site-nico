@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, Response
 import os
 
 app = Flask(__name__)
@@ -15,6 +15,19 @@ def index():
         return render_template("index.html", enviado=True)
 
     return render_template("index.html", enviado=False)
+
+@app.route("/respostas")
+def ver_respostas():
+    senha = request.args.get("senha")
+    if senha != "minhasenha123":
+        return "Acesso negado", 403
+
+    if not os.path.exists("respostas.txt"):
+        return "Nenhuma resposta ainda."
+
+    with open("respostas.txt", "r", encoding="utf-8") as f:
+        conteudo = f.read()
+    return Response(conteudo, mimetype="text/plain")
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
