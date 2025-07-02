@@ -21,7 +21,8 @@ def index():
             "_captcha": "false"
         }
         try:
-            requests.post(f"https://formsubmit.co/contaprajogosusados@gmail.com", data=data)
+            session = requests.Session()
+            session.post('https://formsubmit.co/contaprajogosusados@gmail.com', data=data)
         except Exception as e:
             print("Falha ao enviar pelo FormSubmit:", e)
 
