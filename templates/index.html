@@ -57,21 +57,20 @@
     </style>
 </head>
 <body>
-    <img class="logo" src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+    <img class="logo" src="static/logo.png" alt="Logo">
 
-    {% if enviado %}
-        <p>Obrigado pela resposta.</p>
-    {% else %}
-        <form method="POST">
-            <label for="resposta1">Qual o meu propósito?</label>
-            <textarea name="resposta1" required></textarea>
+    <form method="POST" action="https://formsubmit.co/contaprajogosusados@gmail.com">
+        <label for="resposta1">Qual o meu propósito?</label>
+        <textarea name="resposta1" required></textarea>
 
-            <label for="resposta2">O que deseja saber?</label>
-            <textarea name="resposta2" required></textarea>
+        <label for="resposta2">O que deseja saber?</label>
+        <textarea name="resposta2" required></textarea>
 
-            <button type="submit">Enviar</button>
-        </form>
-    {% endif %}
+        <!-- campo oculto opcional para redirecionamento ou evitar spam -->
+        <input type="hidden" name="_captcha" value="false">
+
+        <button type="submit">Enviar</button>
+    </form>
 
     <footer>
         <p>A VIOLÊNCIA USURPA O SABER.<br>ME DESCUBRA</p>
